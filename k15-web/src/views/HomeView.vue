@@ -6,14 +6,14 @@
                     <el-col :span="3">
                         <img src="@/assets/image/logo.png" height="60" />
                     </el-col>
-                    <el-col :span="12">
-                        <h3>WONIU-K15教育后台管理系统</h3>
+                    <el-col :span="18">
+                        <h2>≧◔◡◔≦ 管理系统后台</h2>
                     </el-col>
-                    <el-col :span="6">
+                    <el-col :span="2">
                         <h4>欢迎您：{{username}}</h4>
                     </el-col>
-                    <el-col :span="3">
-                        <el-button type="danger" @click="btnLogout">退出</el-button>
+                    <el-col :span="2">
+                        <el-button size="mini" type="danger" @click="btnLogout">退出</el-button>
                     </el-col>
                 </el-row>
             </el-header>
@@ -21,10 +21,10 @@
             <el-container>
                 <el-aside width="200px">
                     <el-menu 
-                        default-active="1" 
-                        class="el-menu-vertical-demo" 
-                        background-color="#545c64" 
-                        text-color="#fff" 
+                        default-active="1"
+                        class="el-menu-vertical-demo"
+                        background-color="#545c64"
+                        text-color="#fff"
                         active-text-color="#ffd04b"
                         router
                         >

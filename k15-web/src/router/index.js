@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 // path的路径一定是跟在 #后面的
 const routes = [                    
   { path: '/', redirect: '/login'},
-  { path: '/login', name: 'login', component: () => import('../views/login.vue')},
+  { path: '/login', name: 'login', component: () => import('../views/Login.vue')},
   { path: '/home', name: 'home', component: HomeView, 
         children : [
             {path:'', name: 'welcome', component: () => import('../views/WelcomeView.vue')},

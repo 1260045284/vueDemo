@@ -3,8 +3,8 @@
       <div class="box">
         <!-- 滑动盒子 -->
         <div class="pre-box">
-          <h1>WELCOME</h1>
-          <p>JOIN US!</p>
+          <h1>瞑大人</h1>
+          <p>ming Sir!</p>
           <div class="img-box">
             <img src="../assets/img/waoku.jpg" alt="">
           </div>
@@ -48,7 +48,7 @@
                 <div class="btn-box">
                   <button @click="btnlogin('userForm')">登录</button>
                   <!-- 绑定点击事件 -->
-                  <p @click="mySwitch()">欢迎主人 ! 回家</p>
+                  <p @click="mySwitch()">欢迎回家 ! 主人~</p>
                 </div>
               </el-form>
           </div>

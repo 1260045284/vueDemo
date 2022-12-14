@@ -18,12 +18,12 @@
             <el-col :span="24">
                 <el-form :inline="true" class="demo-form-inline">
                     <div style="margin-top: 15px">
-                        <el-form-item label="用户名：">
-                            <el-input v-model="username" placeholder="请输入用户名" class="input-with-select">
+                        <el-form-item size="mini" label="用户名：">
+                            <el-input size="mini" v-model="username" placeholder="请输入用户名" class="input-with-select">
                                 <el-button slot="append" icon="el-icon-search" @click="queryuser">查找</el-button>
                             </el-input>
                         </el-form-item>
-                        <el-button type="primary" icon="el-icon-user-solid">添加用户</el-button>
+                        <el-button type="primary" size="mini" icon="el-icon-user-solid">添加用户</el-button>
                     </div>
                 </el-form>
             </el-col>
@@ -33,26 +33,26 @@
         <!-- 数据列表开始 -->
         <el-row>
             <el-col :span="24">
-                <el-table :data="userItem" border style="width: 100%" fit="fit" stripe="stripe">
+                <el-table :data="userItem" size="mini"  border style="width: 100%" fit="fit" stripe="stripe">
                     <el-table-column align="center" label="ID" prop="id" width="80px"></el-table-column>
                     <el-table-column align="center" prop="username" label="用户名" width="300px"></el-table-column>
                     <el-table-column align="center" prop="email" label="邮箱"></el-table-column>
                     <el-table-column align="center" prop="status" label="状态" width="80px">
                         <template slot-scope="scope">
                             <span v-if="scope.row.status == 'y'">
-                                <el-tag type="success" effect="dark">正常</el-tag>
+                                <el-tag  size="mini" type="success" effect="dark">正常</el-tag>
                             </span>
                             <span v-if="scope.row.status == 'n'">
-                                <el-tag type="danger" effect="dark">锁定</el-tag>
+                                <el-tag size="mini" type="danger" effect="dark">锁定</el-tag>
                             </span>
                         </template>
                     </el-table-column>
                     <el-table-column align="center" fixed="right" label="操作" width="250px">
                         <template slot-scope="scope">
-                            <el-button type="primary" icon="el-icon-key" title="用户授权" @click="btnperms(scope.row.id)">
+                            <el-button type="primary" size="mini" icon="el-icon-key" title="用户授权" @click="btnperms(scope.row.id)">
                             </el-button>
-                            <el-button type="danger" icon="el-icon-delete" title="删除用户"></el-button>
-                            <el-button type="warning" icon="el-icon-edit" title="修改用户"></el-button>
+                            <el-button type="danger" size="mini" icon="el-icon-delete" title="删除用户"></el-button>
+                            <el-button type="warning" size="mini" icon="el-icon-edit" title="修改用户"></el-button>
                         </template>
                     </el-table-column>
                 </el-table>

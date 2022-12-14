@@ -5,7 +5,7 @@
             :wrapperClosable="true" 
             :visible.sync="dialogPerms"
             direction="rtl" 
-            :size="500" 
+            :size="260"
             custom-class="demo-drawer">
 
             <div class="demo-drawer__content">
@@ -25,8 +25,8 @@
                 <div class="demo-drawer__footer" style="margin-top: 25px">
                     <el-row type="flex" justify="center" align="middle">
                         <el-col :span="20">
-                            <el-button @click="btnClose">取 消</el-button>
-                            <el-button type="primary" @click="btnperms">授权</el-button>
+                            <el-button size="mini" @click="btnClose">取 消</el-button>
+                            <el-button size="mini" type="primary" @click="btnperms">授权</el-button>
                         </el-col>
                     </el-row>
                 </div>
