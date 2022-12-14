@@ -48,7 +48,7 @@
                 <div class="btn-box">
                   <button @click="btnlogin('userForm')">登录</button>
                   <!-- 绑定点击事件 -->
-                  <p @click="mySwitch()">没有账号?去注册</p>
+                  <p @click="mySwitch()">欢迎主人 ! 回家</p>
                 </div>
               </el-form>
           </div>

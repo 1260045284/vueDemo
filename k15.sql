@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 13/11/2022 08:17:30
+ Date: 14/12/2022 14:32:46
 */
 
 SET NAMES utf8mb4;
@@ -123,116 +123,6 @@ INSERT INTO `bili_lists` VALUES (85, '小黎咩咩', '【小黎】开心超人�
 INSERT INTO `bili_lists` VALUES (86, '晨二1呀', '这位同学，我能去你家坐坐吗？❤阿波连同学ed舞', 'BV1TT4y1B7Li', 1, 'http://www.bilibili.com/video/av939485894', NULL);
 
 -- ----------------------------
--- Table structure for categoryss
--- ----------------------------
-DROP TABLE IF EXISTS `categoryss`;
-CREATE TABLE `categoryss`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `cname` varchar(600) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of categoryss
--- ----------------------------
-INSERT INTO `categoryss` VALUES (1, '动画');
-INSERT INTO `categoryss` VALUES (2, '鬼畜');
-INSERT INTO `categoryss` VALUES (3, '舞蹈');
-INSERT INTO `categoryss` VALUES (4, '游戏');
-
--- ----------------------------
--- Table structure for k15_subject
--- ----------------------------
-DROP TABLE IF EXISTS `k15_subject`;
-CREATE TABLE `k15_subject`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `name` varchar(15) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `sort` int(0) NOT NULL,
-  `coursenum` int(0) NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of k15_subject
--- ----------------------------
-INSERT INTO `k15_subject` VALUES (1, '语文', 1, 0);
-INSERT INTO `k15_subject` VALUES (2, '数学', 2, 0);
-INSERT INTO `k15_subject` VALUES (3, '英语', 3, 0);
-INSERT INTO `k15_subject` VALUES (4, '素养', 4, 0);
-INSERT INTO `k15_subject` VALUES (5, '编程', 5, 0);
-INSERT INTO `k15_subject` VALUES (6, '科学', 6, 0);
-INSERT INTO `k15_subject` VALUES (7, '物理', 7, 0);
-INSERT INTO `k15_subject` VALUES (8, '化学', 8, 0);
-INSERT INTO `k15_subject` VALUES (9, '政治', 9, 0);
-INSERT INTO `k15_subject` VALUES (10, '历史', 10, 0);
-INSERT INTO `k15_subject` VALUES (11, '地理', 11, 0);
-INSERT INTO `k15_subject` VALUES (12, '生化', 12, 0);
-INSERT INTO `k15_subject` VALUES (13, '生物', 13, 0);
-
--- ----------------------------
--- Table structure for k15_teacher
--- ----------------------------
-DROP TABLE IF EXISTS `k15_teacher`;
-CREATE TABLE `k15_teacher`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `education` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `career` varchar(500) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `isfamous` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `subjectid` int(0) NOT NULL,
-  `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 35 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of k15_teacher
--- ----------------------------
-INSERT INTO `k15_teacher` VALUES (6, '张老师11111', '黄州大学', '666', 'y', 2, 'y');
-INSERT INTO `k15_teacher` VALUES (7, '张老师', '人民大学', '777', 'y', 2, 'y');
-INSERT INTO `k15_teacher` VALUES (14, '张老师', '2323', '233232', 'y', 2, 'y');
-INSERT INTO `k15_teacher` VALUES (16, 'ewew', 'eew', 'ewewew', 'n', 2, 'y');
-INSERT INTO `k15_teacher` VALUES (17, 'wwe', 'ewew', 'weewew', 'n', 2, 'y');
-INSERT INTO `k15_teacher` VALUES (18, 'ewew', 'ewewew', 'ewewewe', 'n', 2, 'y');
-INSERT INTO `k15_teacher` VALUES (20, '张三丰', '2332', '23323232', 'n', 2, 'y');
-INSERT INTO `k15_teacher` VALUES (21, 'lisimin', '颠三倒四多所', '颠三倒四多所多所', 'y', 3, 'y');
-INSERT INTO `k15_teacher` VALUES (22, 'lisimin', '颠三倒四多所', '颠三倒四多所多所', 'y', 3, 'y');
-INSERT INTO `k15_teacher` VALUES (23, 'maliu', '是多少', '随时随地', 'n', 2, 'y');
-INSERT INTO `k15_teacher` VALUES (24, 'wanglaowu', '很棒', '武汉大学', 'n', 2, 'y');
-INSERT INTO `k15_teacher` VALUES (25, 'maliu', '很棒1111', '武汉人民大学', 'y', 3, 'y');
-INSERT INTO `k15_teacher` VALUES (26, 'maliu', '很棒1111', '武汉人民大学', 'y', 3, 'y');
-INSERT INTO `k15_teacher` VALUES (27, 'tianqi', '华科', '颠三倒四多所多所', 'n', 5, 'y');
-INSERT INTO `k15_teacher` VALUES (28, 'zhaoba', '华科', '颠三倒四多所多所', 'y', 5, 'y');
-INSERT INTO `k15_teacher` VALUES (30, '张无忌', '华中科技大学', '30年的从业经历 上知天文 ', 'y', 1, 'y');
-INSERT INTO `k15_teacher` VALUES (32, 'xiaokongming', 'xiaokongming', '30nian', 'y', 3, 'y');
-INSERT INTO `k15_teacher` VALUES (33, '小花', '蜗牛学院', '', 'y', 11, 'y');
-INSERT INTO `k15_teacher` VALUES (34, '小白', '', '我在蜗学院学习java', 'n', 5, 'y');
-
--- ----------------------------
--- Table structure for rain
--- ----------------------------
-DROP TABLE IF EXISTS `rain`;
-CREATE TABLE `rain`  (
-  `id` int(0) NOT NULL AUTO_INCREMENT,
-  `addr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `time` datetime(0) DEFAULT NULL,
-  `raincount` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `sta` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `staaddr` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of rain
--- ----------------------------
-INSERT INTO `rain` VALUES (1, '西城1', '2022-06-14 00:00:00', '21', '新街1', '聚吡楼1');
-INSERT INTO `rain` VALUES (2, '东城', '2022-06-14 19:43:42', '3', '雄安', '撒');
-INSERT INTO `rain` VALUES (3, '东东', '2022-06-15 19:44:08', '4', '风帆股份', '热');
-INSERT INTO `rain` VALUES (9, '1212121', '2022-06-11 00:00:00', '121', '121211', '1221');
-INSERT INTO `rain` VALUES (10, '232', '2022-06-11 00:00:00', '232', '232', '232');
-INSERT INTO `rain` VALUES (11, 'aa1', '2022-06-24 00:00:00', '12', 'dfsdf', 'sdfdsf');
-INSERT INTO `rain` VALUES (13, 'qq', '2022-06-10 00:00:00', '12', '121', '121');
-
--- ----------------------------
 -- Table structure for rbac_perms
 -- ----------------------------
 DROP TABLE IF EXISTS `rbac_perms`;
@@ -247,39 +137,17 @@ CREATE TABLE `rbac_perms`  (
   `percode` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `icon` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `FK_ParentID`(`parentid`) USING BTREE,
-  CONSTRAINT `FK_ParentID` FOREIGN KEY (`parentid`) REFERENCES `rbac_perms` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  INDEX `FK_ParentID`(`parentid`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 69 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rbac_perms
 -- ----------------------------
-INSERT INTO `rbac_perms` VALUES (16, '讲师管理', 'teacher/manager', NULL, NULL, 'm', 'y', NULL, 'el-icon-s-custom');
-INSERT INTO `rbac_perms` VALUES (17, '讲师列表', 'teacher/list', 'teacher', 16, 'm', 'y', 'teacher:list', NULL);
-INSERT INTO `rbac_perms` VALUES (18, '新增讲师', 'teacher/add', 'teacher/add', 17, 'p', 'y', 'teacher:add', NULL);
-INSERT INTO `rbac_perms` VALUES (19, '删除讲师', 'teacher/delete', 'teacher/delete', 17, 'p', 'y', 'teacher:delete', NULL);
-INSERT INTO `rbac_perms` VALUES (20, '修改讲师', 'teacher/update', 'teacher/update', 17, 'p', 'y', 'teacher:update', NULL);
-INSERT INTO `rbac_perms` VALUES (21, '课程管理', 'subject/manager', NULL, NULL, 'm', 'y', NULL, 'el-icon-school');
-INSERT INTO `rbac_perms` VALUES (22, '课程列表', 'subject/list', 'subject', 21, 'm', 'y', 'subject:list', NULL);
-INSERT INTO `rbac_perms` VALUES (23, '新增课程', 'subject/add', 'subject/add', 22, 'p', 'y', 'subject:add', NULL);
-INSERT INTO `rbac_perms` VALUES (24, '删除课程', 'subject/delete', 'subject/delete', 22, 'p', 'y', 'subject:delete', NULL);
-INSERT INTO `rbac_perms` VALUES (25, '修改课程', 'subject/update', 'subject/update', 22, 'p', 'y', 'subject:update', NULL);
 INSERT INTO `rbac_perms` VALUES (26, '权限管理', 'right/manager', NULL, NULL, 'm', 'y', NULL, 'el-icon-set-up');
 INSERT INTO `rbac_perms` VALUES (27, '权限列表', 'right/list', 'right', 26, 'm', 'y', 'right:list', NULL);
 INSERT INTO `rbac_perms` VALUES (28, '新增权限', 'right/add', 'right/add', 27, 'p', 'y', 'right:add', NULL);
 INSERT INTO `rbac_perms` VALUES (29, '删除权限', 'right/delete', 'right/delete', 27, 'p', 'y', 'right:delete', NULL);
 INSERT INTO `rbac_perms` VALUES (30, '修改权限', 'right/update', 'right/update', 27, 'p', 'y', 'right:update', NULL);
-INSERT INTO `rbac_perms` VALUES (31, '学生管理', 'student/manager', NULL, NULL, 'm', 'y', NULL, 'el-icon-user-solid');
-INSERT INTO `rbac_perms` VALUES (32, '学生列表', 'student/list', 'student', 31, 'm', 'y', 'student:list', NULL);
-INSERT INTO `rbac_perms` VALUES (33, '添加学生', 'student/add', 'student/add', 32, 'p', 'y', 'student:add', NULL);
-INSERT INTO `rbac_perms` VALUES (34, '删除学生', 'student/delete', 'student/delete', 32, 'p', 'y', 'student:delete', NULL);
-INSERT INTO `rbac_perms` VALUES (35, '修改学生', 'student/update', 'student/update', 32, 'p', 'y', 'student:update1', NULL);
-INSERT INTO `rbac_perms` VALUES (36, '数据统计', 'DataCount', NULL, NULL, 'm', 'y', NULL, 'el-icon-mouse');
-INSERT INTO `rbac_perms` VALUES (37, '数据报表', 'data/list', 'data/list', 36, 'm', 'y', 'data:list', NULL);
-INSERT INTO `rbac_perms` VALUES (38, '角色管理', 'roles/manager', NULL, NULL, 'm', 'y', NULL, 'el-icon-share');
-INSERT INTO `rbac_perms` VALUES (39, '角色列表', 'roles/list', 'role', 38, 'm', 'y', 'role:list', NULL);
-INSERT INTO `rbac_perms` VALUES (40, '新增角色', 'role/add', 'role/add', 39, 'p', 'y', 'role:add', NULL);
-INSERT INTO `rbac_perms` VALUES (41, '删除角色', 'role/delete', 'role/delete', 39, 'p', 'y', 'role:delete', NULL);
 INSERT INTO `rbac_perms` VALUES (42, '用户管理', 'user/manager', NULL, NULL, 'm', 'y', NULL, 'el-icon-user');
 INSERT INTO `rbac_perms` VALUES (43, '用户列表', 'user/list', 'user', 42, 'm', 'y', 'user:list', NULL);
 INSERT INTO `rbac_perms` VALUES (44, '新增用户', 'user/add', 'user/add', 43, 'p', 'y', 'user:add', NULL);
@@ -287,16 +155,9 @@ INSERT INTO `rbac_perms` VALUES (45, '修改用户', 'user/update', 'user/update
 INSERT INTO `rbac_perms` VALUES (46, '删除用户', 'user/delete', 'user/delete', 43, 'p', 'y', 'user:delete', NULL);
 INSERT INTO `rbac_perms` VALUES (55, '视频管理', 'video/manager', NULL, NULL, 'm', 'y', NULL, 'el-icon-user');
 INSERT INTO `rbac_perms` VALUES (56, '视频列表', 'video/list', 'video', 55, 'm', 'y', 'video:list', NULL);
-INSERT INTO `rbac_perms` VALUES (57, '修改视频', 'video/update', '', 56, 'p', 'y', 'video:update', NULL);
-INSERT INTO `rbac_perms` VALUES (58, '删除视频', 'video/delete', '', 56, 'p', 'y', 'video:delete', NULL);
-INSERT INTO `rbac_perms` VALUES (59, '添加视频', 'video/add', '', 56, 'p', 'y', 'video:add', NULL);
-INSERT INTO `rbac_perms` VALUES (60, '类别管理', 'categoryss/manager', NULL, NULL, 'm', 'y', NULL, 'el-icon-mouse');
-INSERT INTO `rbac_perms` VALUES (61, '类别列表', 'categoryss/list', 'list', 60, 'm', 'y', 'categoryss:list', NULL);
-INSERT INTO `rbac_perms` VALUES (64, '雨量管理', 'rain/manager', NULL, NULL, 'm', 'y', NULL, 'el-icon-mouse');
-INSERT INTO `rbac_perms` VALUES (65, '雨量列表', 'rain/list', 'rain', 64, 'm', 'y', 'rain:list', NULL);
-INSERT INTO `rbac_perms` VALUES (66, '修改雨量', 'rain/update', '', 65, 'm', 'y', 'rain:update', NULL);
-INSERT INTO `rbac_perms` VALUES (67, '删除雨量', 'rain/delete', NULL, 65, 'm', 'y', 'rain:delete', NULL);
-INSERT INTO `rbac_perms` VALUES (68, '添加雨量', 'rain/add', NULL, 65, 'm', 'y', 'rain:add', NULL);
+INSERT INTO `rbac_perms` VALUES (57, '修改视频', 'video/update', 'video/update', 56, 'p', 'y', 'video:update', NULL);
+INSERT INTO `rbac_perms` VALUES (58, '删除视频', 'video/delete', 'video/delete', 56, 'p', 'y', 'video:delete', NULL);
+INSERT INTO `rbac_perms` VALUES (59, '添加视频', 'video/add', 'video/add', 56, 'p', 'y', 'video:add', NULL);
 
 -- ----------------------------
 -- Table structure for rbac_user
@@ -309,7 +170,7 @@ CREATE TABLE `rbac_user`  (
   `status` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of rbac_user
@@ -336,68 +197,25 @@ CREATE TABLE `rbac_user_perm`  (
 -- ----------------------------
 -- Records of rbac_user_perm
 -- ----------------------------
-INSERT INTO `rbac_user_perm` VALUES (1, 16);
-INSERT INTO `rbac_user_perm` VALUES (2, 16);
-INSERT INTO `rbac_user_perm` VALUES (3, 16);
-INSERT INTO `rbac_user_perm` VALUES (1, 17);
-INSERT INTO `rbac_user_perm` VALUES (2, 17);
-INSERT INTO `rbac_user_perm` VALUES (3, 17);
-INSERT INTO `rbac_user_perm` VALUES (1, 18);
-INSERT INTO `rbac_user_perm` VALUES (2, 18);
-INSERT INTO `rbac_user_perm` VALUES (3, 18);
-INSERT INTO `rbac_user_perm` VALUES (1, 19);
-INSERT INTO `rbac_user_perm` VALUES (3, 19);
-INSERT INTO `rbac_user_perm` VALUES (1, 20);
-INSERT INTO `rbac_user_perm` VALUES (2, 20);
-INSERT INTO `rbac_user_perm` VALUES (3, 20);
-INSERT INTO `rbac_user_perm` VALUES (3, 21);
-INSERT INTO `rbac_user_perm` VALUES (3, 22);
-INSERT INTO `rbac_user_perm` VALUES (3, 23);
-INSERT INTO `rbac_user_perm` VALUES (3, 24);
-INSERT INTO `rbac_user_perm` VALUES (3, 25);
-INSERT INTO `rbac_user_perm` VALUES (2, 26);
 INSERT INTO `rbac_user_perm` VALUES (3, 26);
-INSERT INTO `rbac_user_perm` VALUES (2, 27);
+INSERT INTO `rbac_user_perm` VALUES (5, 26);
 INSERT INTO `rbac_user_perm` VALUES (3, 27);
-INSERT INTO `rbac_user_perm` VALUES (2, 28);
+INSERT INTO `rbac_user_perm` VALUES (5, 27);
 INSERT INTO `rbac_user_perm` VALUES (3, 28);
-INSERT INTO `rbac_user_perm` VALUES (2, 29);
+INSERT INTO `rbac_user_perm` VALUES (5, 28);
 INSERT INTO `rbac_user_perm` VALUES (3, 29);
-INSERT INTO `rbac_user_perm` VALUES (2, 30);
+INSERT INTO `rbac_user_perm` VALUES (5, 29);
 INSERT INTO `rbac_user_perm` VALUES (3, 30);
-INSERT INTO `rbac_user_perm` VALUES (3, 31);
-INSERT INTO `rbac_user_perm` VALUES (3, 32);
-INSERT INTO `rbac_user_perm` VALUES (3, 33);
-INSERT INTO `rbac_user_perm` VALUES (3, 34);
-INSERT INTO `rbac_user_perm` VALUES (3, 35);
-INSERT INTO `rbac_user_perm` VALUES (3, 38);
-INSERT INTO `rbac_user_perm` VALUES (3, 39);
-INSERT INTO `rbac_user_perm` VALUES (3, 40);
-INSERT INTO `rbac_user_perm` VALUES (3, 41);
+INSERT INTO `rbac_user_perm` VALUES (5, 30);
 INSERT INTO `rbac_user_perm` VALUES (3, 42);
 INSERT INTO `rbac_user_perm` VALUES (3, 43);
 INSERT INTO `rbac_user_perm` VALUES (3, 44);
 INSERT INTO `rbac_user_perm` VALUES (3, 45);
 INSERT INTO `rbac_user_perm` VALUES (3, 46);
-INSERT INTO `rbac_user_perm` VALUES (1, 55);
-INSERT INTO `rbac_user_perm` VALUES (3, 55);
-INSERT INTO `rbac_user_perm` VALUES (1, 56);
-INSERT INTO `rbac_user_perm` VALUES (3, 56);
-INSERT INTO `rbac_user_perm` VALUES (1, 57);
-INSERT INTO `rbac_user_perm` VALUES (3, 57);
-INSERT INTO `rbac_user_perm` VALUES (3, 58);
-INSERT INTO `rbac_user_perm` VALUES (3, 59);
-INSERT INTO `rbac_user_perm` VALUES (3, 64);
-INSERT INTO `rbac_user_perm` VALUES (4, 64);
-INSERT INTO `rbac_user_perm` VALUES (5, 64);
-INSERT INTO `rbac_user_perm` VALUES (3, 65);
-INSERT INTO `rbac_user_perm` VALUES (4, 65);
-INSERT INTO `rbac_user_perm` VALUES (5, 65);
-INSERT INTO `rbac_user_perm` VALUES (3, 66);
-INSERT INTO `rbac_user_perm` VALUES (5, 66);
-INSERT INTO `rbac_user_perm` VALUES (3, 67);
-INSERT INTO `rbac_user_perm` VALUES (5, 67);
-INSERT INTO `rbac_user_perm` VALUES (3, 68);
-INSERT INTO `rbac_user_perm` VALUES (4, 68);
+INSERT INTO `rbac_user_perm` VALUES (5, 55);
+INSERT INTO `rbac_user_perm` VALUES (5, 56);
+INSERT INTO `rbac_user_perm` VALUES (5, 57);
+INSERT INTO `rbac_user_perm` VALUES (5, 58);
+INSERT INTO `rbac_user_perm` VALUES (5, 59);
 
 SET FOREIGN_KEY_CHECKS = 1;
