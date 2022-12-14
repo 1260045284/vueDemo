@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.woniu.mapper.TeacherMapper">
+
+    <select id="queryTeacher" resultType="Teacher">
+        SELECT t.*,s.`name` AS subjectname
+        FROM k15_teacher t
+        LEFT JOIN k15_subject s ON t.`subjectid`=s.`id`
+        <where>
+            <if test="teacherName!=null and teacherName!=''">
+                and t.name like concat('%', #{teacherName}, '%')
+            </if>
+        </where>
+        ORDER BY t.id DESC
+    </select>
+</mapper>

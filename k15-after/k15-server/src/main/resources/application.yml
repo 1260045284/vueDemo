@@ -1,0 +1,38 @@
+server:
+    servlet:
+        encoding:
+            enabled: true
+            charset: utf-8
+            force: true
+
+spring:
+    datasource:
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        hikari:
+            idle-timeout: 60000
+            maximum-pool-size: 30
+            minimum-idle: 10
+        username: root
+        password: root
+        type: com.zaxxer.hikari.HikariDataSource
+        url: jdbc:mysql://localhost:3306/k15?useUnicode=true&characterEncoding=utf8&useSSL=false&nullCatalogMeansCurrent=true&serverTimezone=Asia/Shanghai
+    thymeleaf:
+        cache: false
+        prefix: classpath:/templates/
+        suffix: .html
+    main:
+        allow-bean-definition-overriding: true
+#    security:  # 改变默认的登录用户名和密码
+#        user:
+#            name:  woniu
+#            password: 123456
+
+mybatis-plus:
+    type-aliases-package: com.woniu.entity
+    configuration:
+        map-underscore-to-camel-case: false                     # false 表示不开启驼峰     true表示开启驼峰功能
+        log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl     # logbak 日志
+
+
+pagehelper:
+    reasonable: true
