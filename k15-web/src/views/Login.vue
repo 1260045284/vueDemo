@@ -128,7 +128,6 @@ export default {
       this.$refs[formName].resetFields();
     },
     created: function() {
-      this.bubleCreate();
     },
   }
 }

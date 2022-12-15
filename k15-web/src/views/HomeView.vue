@@ -3,20 +3,23 @@
         <el-container>
             <el-header>
                 <el-row type="flex" class="row-bg" justify="center" align="middle">
+                    <el-col class="img" :span="4">
+                        <img src="@/assets/image/logo.png" height="40" />
+                    </el-col>
                     <el-col :span="3">
-                        <img src="@/assets/image/logo.png" height="60" />
+                      <h2><el-link type="danger"><B> {{smiles[value%smiles.length]}}</B></el-link></h2>
                     </el-col>
-                    <el-col :span="5">
-                        <h2> {{smiles[value%smiles.length]}}</h2>
-                    </el-col>
-                  <el-col :span="12">
-                    <h3>{{msg}}</h3>
+                  <el-col :span="2" class="gg">
+                    <h3> <B>公告 :</B> <el-link type="warning"><i class="el-icon-message-solid"  ></i></el-link>&nbsp;&nbsp;&nbsp;</h3>
+                  </el-col>
+                  <el-col :span="11" class="msg" >
+                     {{msg.replaceAll("龘","&nbsp&nbsp&nbsp")}}
                   </el-col>
                   <div id="he-plugin-simple"></div>
                     <el-col :span="3">
                         <h4>欢迎您: <el-link type="danger"><B>{{username}}</B></el-link></h4>
                     </el-col>
-                  <el-avatar v-popover:popover  :size="size" :src=user.avatar> </el-avatar>
+                  <el-avatar v-popover:popover class="avatar"  :size="size" :src=user.avatar> </el-avatar>
                     <el-popover :span="5"
                         ref="popover"
                         placement="top-start"
@@ -87,6 +90,7 @@
                 value: 0,
                 smiles: ["(＝^ω^＝)","(๑> 灬 <)","( ˘•灬•˘ )","(ง •̀灬•́)ง"],
                 msg:"视频看完有惊喜！！！",
+                num:0,
             };
         },
         methods: {
@@ -171,7 +175,13 @@
             this.value++;
           },
           marquee() {
-            this.msg = this.msg.substring(1)+this.msg.substring(0,1);
+            while(this.msg.length<82){
+              this.msg =this.msg+"龘"
+            }
+            if(this.msg.length>42){
+              this.msg =this.msg.substring(0,42);
+            }
+            this.msg = this.msg.substring(1)+""+this.msg.substring(0,1);
           },
           over(){
             clearInterval(this.timer);
@@ -247,6 +257,17 @@
       clear: both
     }
     .meg{
-      padding-left: 14px;
+        padding-left: 14px;
     }
+    .msg{
+        text-align:left;
+    }
+    .gg{
+      text-align:right;
+    }
+    .img{
+      padding-top:15px;
+      margin-left:-90px;
+    }
+
 </style>
