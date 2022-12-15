@@ -6,15 +6,38 @@
                     <el-col :span="3">
                         <img src="@/assets/image/logo.png" height="60" />
                     </el-col>
-                    <el-col :span="18">
-                        <h2>≧◔◡◔≦ 管理系统后台</h2>
+                    <el-col :span="5">
+                        <h2> {{smiles[value%smiles.length]}}</h2>
                     </el-col>
-                    <el-col :span="2">
-                        <h4>欢迎您：{{username}}</h4>
+                  <el-col :span="12">
+                    <h3>{{msg}}</h3>
+                  </el-col>
+                  <div id="he-plugin-simple"></div>
+                    <el-col :span="3">
+                        <h4>欢迎您: <el-link type="danger"><B>{{username}}</B></el-link></h4>
                     </el-col>
-                    <el-col :span="2">
-                        <el-button size="mini" type="danger" @click="btnLogout">退出</el-button>
-                    </el-col>
+                  <el-avatar v-popover:popover  :size="size" :src=user.avatar> </el-avatar>
+                    <el-popover :span="5"
+                        ref="popover"
+                        placement="top-start"
+                        title=""
+                        width="20px"
+                        trigger="hover"
+                        content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
+
+                      <el-badge :value="2"  type="warning">
+                        <el-button  size="mini" type="success" round icon="el-icon-message" @click="btnLogout"></el-button>
+                      </el-badge>
+
+                      <el-badge :value="null" class="meg" type="warning">
+                        <el-button  size="mini"  type="primary" round icon="el-icon-edit" @click="btnLogout"></el-button>
+                      </el-badge>
+
+                      <el-badge :value="null" class="meg" type="warning">
+                        <el-button type="danger" size="mini" round icon="el-icon-close" @click="btnLogout"></el-button>
+                      </el-badge>
+
+                    </el-popover>
                 </el-row>
             </el-header>
 
@@ -57,7 +80,13 @@
         data: function() {
             return {
                 username: "",
+                user:{avatar:"https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png"},
                 menuItem:[], //接收用户的菜单数据
+                size:"small",
+                timer: "",
+                value: 0,
+                smiles: ["(＝^ω^＝)","(๑> 灬 <)","( ˘•灬•˘ )","(ง •̀灬•́)ง"],
+                msg:"视频看完有惊喜！！！",
             };
         },
         methods: {
@@ -84,6 +113,32 @@
                         });
                     });
             },
+            // 加载用户
+            loadUser: function() {
+              this.$axios.get("/api/user/getOne?username="+this.username)
+                  .then((res) => {
+                    if(res.data.status == 200) {
+                      this.user = res.data.data;
+                      if(this.user.avatar==null){
+                        this.user.avatar="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png";
+                      }
+                      // console.log(this.user);
+                    } else {
+                      this.$message({
+                        showClose: true,
+                        message: res.data.msg,
+                        type: "warning"
+                      });
+                    }
+                  })
+                  .catch((err) => {
+                    this.$message({
+                      showClose: true,
+                      message: err,
+                      type: "error"
+                    });
+                  });
+            },
             btnLogout: function() {
                 this.$confirm('确定退出本系统吗？', '系统提示', {
                     confirmButtonText: '确定',
@@ -107,13 +162,32 @@
                                 });
                         });
                 });
-            }
+            },
+          start(){
+            this.timer = setInterval(this.valChange, 5000); // 注意: 第一个参数为方法名的时候不要加括号;
+            setInterval(this.marquee, 300); // 注意: 第一个参数为方法名的时候不要加括号;
+          },
+          valChange() {
+            this.value++;
+          },
+          marquee() {
+            this.msg = this.msg.substring(1)+this.msg.substring(0,1);
+          },
+          over(){
+            clearInterval(this.timer);
+          }
+
         },
         created: function() {
             this.username = window.localStorage.getItem('username');
             // 调用loadMenu函数初始化menuItem数据
             this.loadMenu();
-        }
+            this.loadUser(this.username);
+            this.start();
+        },
+        beforeDestroy() {
+          clearInterval(this.timer);
+        },
     }
 </script>
 
@@ -143,6 +217,36 @@
         text-align: center;
         line-height: 60px;
     }
+    .time {
+      font-size: 13px;
+      color: #999;
+    }
 
+    .bottom {
+      margin-top: 13px;
+      line-height: 12px;
+    }
 
+    .button {
+      padding: 0;
+      float: right;
+    }
+
+    .image {
+      width: 100%;
+      display: block;
+    }
+
+    .clearfix:before,
+    .clearfix:after {
+      display: table;
+      content: "";
+    }
+
+    .clearfix:after {
+      clear: both
+    }
+    .meg{
+      padding-left: 14px;
+    }
 </style>

@@ -1,7 +1,9 @@
 package com.woniu.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.fasterxml.jackson.databind.util.BeanUtil;
 import com.github.pagehelper.PageInfo;
 import com.woniu.entity.Perms;
 import com.woniu.entity.Teacher;
@@ -9,12 +11,11 @@ import com.woniu.entity.User;
 import com.woniu.service.IPermsService;
 import com.woniu.service.IUserService;
 import com.woniu.util.ResponseResult;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -91,4 +92,40 @@ public class UserController {
         return new ResponseResult<>(200,"用户授权成功。。");
     }
 
+    @GetMapping("/delete")
+    @PreAuthorize("hasAuthority('user:delete')")
+    public ResponseResult<Void> updateTeacher(Integer id) {
+        boolean isOk = userService.removeById(id);
+        ResponseResult<Void> responseResult = null;
+        if(isOk) {
+            responseResult = new ResponseResult<>(200, "编辑讲师成功");
+        } else {
+            responseResult = new ResponseResult<>(500, "编辑讲师失败");
+        }
+        return responseResult;
+    }
+
+    /**
+     * 添加
+     * @return
+     */
+    @GetMapping("/addShow")
+    @PreAuthorize("hasAuthority('user:add')")
+    public ResponseResult<Void> addShow() {
+        return new ResponseResult<>(200, "OK");
+    }
+
+
+    @GetMapping("/getOne")
+    public ResponseResult<User> getOne(String username) {
+        LambdaQueryWrapper<User> objectLambdaQueryWrapper = new LambdaQueryWrapper<>();
+        User user = userService.getOne(objectLambdaQueryWrapper.eq(true, User::getUsername, username));
+        ResponseResult<User> responseResult = null;
+        if(user!=null) {
+            responseResult = new ResponseResult<>(user,"成功",200);
+        } else {
+            responseResult = new ResponseResult<>(500, "失败");
+        }
+        return responseResult;
+    }
 }

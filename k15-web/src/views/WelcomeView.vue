@@ -5,7 +5,7 @@
 <!--      <video muted="muted" :id="startvideo+i" class="video" :src="item.path" type="video/mp4" poster="false.png" autoplay="autoplay" controls="controls" loop="-1">-->
 <!--        <p>你的浏览器不支持video标签.</p>-->
 <!--      </video>-->
-      <video muted="muted" :id="startvideo+i" class="video" src="../assets/file/video.mp4" type="video/mp4" poster="false.png" autoplay="autoplay" controls="controls" loop="-1">-->
+      <video muted="muted"  class="video" src="../assets/file/video.mp4" type="video/mp4" poster="false.png" autoplay="autoplay" controls="controls" loop="-1">
                 <p>你的浏览器不支持video标签.</p>
               </video>
     </div>
@@ -22,12 +22,7 @@
             }
         },
       mounted() {
-        for (var i = 0; i < 4; i++) {
-          //获取四个视频的id
-          var video = document.getElementById("startvideo"+i);
-          //调用video标签的播放函数
-          video.play();
-        }
+
       }
     }
 </script>

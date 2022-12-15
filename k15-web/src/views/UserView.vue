@@ -18,12 +18,12 @@
             <el-col :span="24">
                 <el-form :inline="true" class="demo-form-inline">
                     <div style="margin-top: 15px">
-                        <el-form-item size="mini" label="用户名：">
+                        <el-form-item size="mini" label="">
                             <el-input size="mini" v-model="username" placeholder="请输入用户名" class="input-with-select">
                                 <el-button slot="append" icon="el-icon-search" @click="queryuser">查找</el-button>
                             </el-input>
                         </el-form-item>
-                        <el-button type="primary" size="mini" icon="el-icon-user-solid">添加用户</el-button>
+                        <el-button type="primary" size="mini" @click="showAddUser" icon="el-icon-user-solid">添加用户</el-button>
                     </div>
                 </el-form>
             </el-col>
@@ -51,8 +51,8 @@
                         <template slot-scope="scope">
                             <el-button type="primary" size="mini" icon="el-icon-key" title="用户授权" @click="btnperms(scope.row.id)">
                             </el-button>
-                            <el-button type="danger" size="mini" icon="el-icon-delete" title="删除用户"></el-button>
-                            <el-button type="warning" size="mini" icon="el-icon-edit" title="修改用户"></el-button>
+                            <el-button type="danger" size="mini" icon="el-icon-delete" title="删除用户" @click="deleteOne(scope)"></el-button>
+                            <el-button type="warning" size="mini" icon="el-icon-edit" title="修改用户" @click="btnperms(scope.row.id)"></el-button>
                         </template>
                     </el-table-column>
                 </el-table>
@@ -82,11 +82,15 @@
 
         <!-- 调用用户权限弹窗 -->
         <user-perms ref="userperms"></user-perms>
+
+      <!--添加讲师组件-->
+        <User-add ref="addUserCom"></User-add>
     </div>
 </template>
 
 <script>
     import UserPerms from '@/components/user/UserPerms.vue';
+    import UserAdd from '@/components/user/UserAdd.vue';
 
     export default {
         name: "",
@@ -154,10 +158,58 @@
             btnperms(userid) { //显示授权控件(授权子组件中)
                 this.$refs.userperms.loadTree(userid); //调用加载树控件数据方法
                 this.$refs.userperms.dialogPerms = true; //显示树控件
-            }
+            },
+          // 删除讲师
+          deleteOne: function(scope) {
+            console.log(scope);
+            this.$axios.get('/api/user/delete?id=' + scope.row.id)
+                .then((res) => {
+                  if(res.data.status == 200) {
+                    // 通过子组件的引用传递，获得子组件的变量
+                    this.userItem.splice(scope.$index, 1);
+                  } else {
+                    this.$message({
+                      showClose: true,
+                      message: res.data.msg,
+                      type: "warning",
+                    });
+                  }
+                })
+                .catch((err) => {
+                  this.$message({
+                    showClose: true,
+                    message: err,
+                    type: "error",
+                  });
+                });
+          },
+          // 添加讲师弹框
+          showAddUser: function() {
+            this.$axios.get('/api/user/addShow')
+                .then((res) => {
+                  if(res.data.status == 200) {    // 有权限
+                    // 通过子组件的引用传递，获得子组件中的变量
+                    this.$refs.addUserCom.dialogAdd = true;
+                  } else {                        // 否则
+                    this.$message({
+                      showClose: true,
+                      message: res.data.msg,
+                      type: "warning",
+                    });
+                  }
+                })
+                .catch((err) => {
+                  this.$message({
+                    showClose: true,
+                    message: err,
+                    type: "error",
+                  });
+                });
+          },
         },
         components: {
-           UserPerms
+           UserPerms,
+          UserAdd
         },
         created() {
             this.queryuser();
