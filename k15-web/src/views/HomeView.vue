@@ -6,8 +6,9 @@
                     <el-col class="img" :span="4">
                         <img src="@/assets/image/logo.png" height="40" />
                     </el-col>
-                    <el-col :span="3">
-                      <h2><el-link type="danger"><B> {{smiles[value%smiles.length]}}</B></el-link></h2>
+                    <el-col :span="3" class="he-plugin-simple">
+<!--                      <h2><el-link type="danger"><B> {{smiles[value%smiles.length]}}</B></el-link></h2>-->
+                       <B><div id="he-plugin-simple"></div></B>
                     </el-col>
                   <el-col :span="2" class="gg">
                     <h3> <B>公告 :</B> <el-link type="warning"><i class="el-icon-message-solid"  ></i></el-link>&nbsp;&nbsp;&nbsp;</h3>
@@ -15,7 +16,7 @@
                   <el-col :span="11" class="msg" >
                      {{msg.replaceAll("龘","&nbsp&nbsp&nbsp")}}
                   </el-col>
-                  <div id="he-plugin-simple"></div>
+<!--                  <div id="he-plugin-simple"></div>-->
                     <el-col :span="3">
                         <h4>欢迎您: <el-link type="danger"><B>{{username}}</B></el-link></h4>
                     </el-col>
@@ -88,7 +89,7 @@
                 size:"small",
                 timer: "",
                 value: 0,
-                smiles: ["(＝^ω^＝)","(๑> 灬 <)","( ˘•灬•˘ )","(ง •̀灬•́)ง"],
+                smiles: ["➹"," ➸","  ➷","   💘"],
                 msg:"视频看完有惊喜！！！",
                 num:0,
             };
@@ -188,12 +189,47 @@
           }
 
         },
+        mounted() {
+
+        },
         created: function() {
             this.username = window.localStorage.getItem('username');
             // 调用loadMenu函数初始化menuItem数据
             this.loadMenu();
             this.loadUser(this.username);
             this.start();
+            //和风天气插件调用
+            window.WIDGET = {
+              "CONFIG": {
+                "modules": "01234",
+                "background": "5",
+                "tmpColor": "FFFFFF",
+                "tmpSize": "16",
+                "cityColor": "FFFFFF",
+                "citySize": "16",
+                "aqiColor": "FFFFFF",
+                "aqiSize": "16",
+                "weatherIconSize": "24",
+                "alertIconSize": "18",
+                "padding": "10px 10px 10px 10px",
+                "shadow": "0",
+                "language": "auto",
+                "fixed": "false",
+                "vertical": "top",
+                "horizontal": "left",
+                "key": "ec8e2727d25b490a831b3271cb9596f4"
+              }
+          };
+          (function (d) {
+            var c = d.createElement('link');
+            c.rel = 'stylesheet';
+            c.href = 'https://widget.heweather.net/simple/static/css/he-simple.css?v=1.4.0';
+            var s = d.createElement('script');
+            s.src = 'https://widget.heweather.net/simple/static/js/he-simple.js?v=1.4.0';
+            var sn = d.getElementsByTagName('script')[0];
+            sn.parentNode.insertBefore(c, sn);
+            sn.parentNode.insertBefore(s, sn);
+          })(document)
         },
         beforeDestroy() {
           clearInterval(this.timer);
@@ -269,5 +305,8 @@
       padding-top:15px;
       margin-left:-90px;
     }
-
+    .he-plugin-simple{
+      z-index:999;
+      padding-top: 10px;
+    }
 </style>

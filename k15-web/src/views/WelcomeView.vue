@@ -28,8 +28,8 @@
         },
         hideArea() {
           this.count++;
-          if(this.count==300 && this.$router.currentRoute.path=="/home"){
-            this.$router.push({name: 'login'});
+          if(this.count==960 && this.$router.currentRoute.path=="/home"){
+            this.$router.push({name: 'welcomeAgain'});
           }
         },
 
