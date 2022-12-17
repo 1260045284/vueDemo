@@ -15,7 +15,8 @@ const routes = [
             {path: '/teacher', name: 'teacher', component: () => import('../views/TeacherView.vue')},
             {path: '/user', name: 'user', component: () => import('@/views/UserView.vue') }
         ]
-    }
+  },
+  { path: '/bili', name: 'bili', component: () => import('../views/BiliView.vue')},
 ]
 
 const router = new VueRouter({

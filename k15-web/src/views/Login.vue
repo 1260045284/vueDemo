@@ -25,7 +25,7 @@
           <div class="btn-box">
             <button>注册</button>
             <!-- 绑定点击事件 -->
-            <p onclick="mySwitch()">已有账号?去登录</p>
+            <p onclick="">已有账号?去登录</p>
           </div>
         </div>
         <!-- 登录盒子 -->
@@ -48,7 +48,7 @@
                 <div class="btn-box">
                   <button @click="btnlogin('userForm')">登录</button>
                   <!-- 绑定点击事件 -->
-                  <p @click="mySwitch()">欢迎回家 ! 主人~</p>
+                  <p @click="">欢迎回家 ! 主人~</p>
                 </div>
               </el-form>
           </div>
@@ -125,7 +125,7 @@ export default {
     },
     // 重置表单
     resetForm: function(formName) {
-      this.$refs[formName].resetFields();
+      // this.$refs[formName].resetFields();
     },
     created: function() {
     },

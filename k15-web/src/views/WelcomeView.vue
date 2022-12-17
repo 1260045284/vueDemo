@@ -5,7 +5,7 @@
 <!--      <video muted="muted" :id="startvideo+i" class="video" :src="item.path" type="video/mp4" poster="false.png" autoplay="autoplay" controls="controls" loop="-1">-->
 <!--        <p>你的浏览器不支持video标签.</p>-->
 <!--      </video>-->
-      <video muted="muted"  class="video" src="../assets/file/video.mp4" type="video/mp4"  autoplay="autoplay" controls="controls" loop="-1">
+      <video muted="muted"  class="video" src="../assets/file/1.mp4" type="video/mp4"  autoplay="autoplay" controls="controls" loop="-1">
                 <p>你的浏览器不支持video标签.</p>
               </video>
     </div>
@@ -28,8 +28,8 @@
         },
         hideArea() {
           this.count++;
-          if(this.count==960 && this.$router.currentRoute.path=="/home"){
-            this.$router.push({name: 'welcomeAgain'});
+          if(this.count==620 && this.$router.currentRoute.path=="/home"){
+            this.$router.push({name: 'bili'});
           }
         },
 

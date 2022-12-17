@@ -11,7 +11,7 @@
                        <B><div id="he-plugin-simple"></div></B>
                     </el-col>
                   <el-col :span="2" class="gg">
-                    <h3> <B>公告 :</B> <el-link type="warning"><i class="el-icon-message-solid"  ></i></el-link>&nbsp;&nbsp;&nbsp;</h3>
+                    <h3> <B v-if="msg.length!=0">公告 :</B> <el-link v-if="msg.length!=0" type="warning"><i class="el-icon-message-solid"  ></i></el-link>&nbsp;&nbsp;&nbsp;</h3>
                   </el-col>
                   <el-col :span="11" class="msg" >
                      {{msg.replaceAll("龘","&nbsp&nbsp&nbsp")}}
@@ -176,7 +176,7 @@
             this.value++;
           },
           marquee() {
-            while(this.msg.length<82){
+            while(this.msg.length>0 && this.msg.length<82){
               this.msg =this.msg+"龘"
             }
             if(this.msg.length>42){
